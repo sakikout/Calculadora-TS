@@ -4,6 +4,8 @@
 
 **Objetivo:** Dissertar sobre o conceito de Contexto e Hooks
 
+Para acessar a pasta do projeto, caminhar até a pasta calculadora-ts com `cd calculadora-ts`.
+
 ---
 ## Questões
 
