@@ -12,10 +12,11 @@ export const Grid = styled.div`
 `;
 
 export const HistoryContainer = styled.div`
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 200px;
     margin: 100px auto;
-    background: #0E1116;
     padding: 20px;
 `;
 
@@ -30,7 +31,7 @@ export const CalculatorContainer = styled.div`
   background: #0E1116;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 30px 20px rgba(0, 0, 0, 0.3);
 `;
 
 export const Display = styled.div`
@@ -38,7 +39,7 @@ export const Display = styled.div`
   color:rgb(255, 255, 255);
   font-size: 2rem;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 5px;
   margin-bottom: 20px;
   text-align: right;
 `;
