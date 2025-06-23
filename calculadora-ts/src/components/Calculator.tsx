@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 
 export default function Calculator() {
+
+  const [display, setDisplay] = useState('0');
   const {
     addFirstNumber,
     firstNumber,
@@ -23,13 +25,15 @@ export default function Calculator() {
   '1', '2', '3', '=',
   '0', '.'
   ];
-
+  
   const specialSpans: Record<string, { col?: number; row?: number }> = {
     '0': { col: 2 },
     '=': { row: 2 },
   };
 
-  const [display, setDisplay] = useState('');
+  const [historyVisible, setHistoryVisible] = useState(false);
+  const toggleHistory = () => setHistoryVisible(!historyVisible);
+
 
   const handleInput = (value: string) => {
 
@@ -54,7 +58,7 @@ export default function Calculator() {
     } else {
       if (value === '.' && secondNumber === '') {
         addSecondNumber('0.');
-        setDisplay(firstNumber + ' ' + operator + '0.');
+        setDisplay(firstNumber + ' ' + operator + ' 0.');
         return;
       }
 
@@ -107,10 +111,10 @@ export default function Calculator() {
   };
 
   const clear = () => {
-    addFirstNumber('');
+    addFirstNumber('0');
     changeOperator('');
     addSecondNumber('');
-    setDisplay('');
+    setDisplay('0');
   };
 
   const clearEntries = () => {
@@ -147,11 +151,16 @@ export default function Calculator() {
     </ButtonGrid>
     </CalculatorContainer>
     <HistoryContainer>
+      <Button onClick={toggleHistory}>Show History</Button>
+      { historyVisible ?
+        
       <HistoryTitle>
         {history.map((entry, index) => (
           <li key={index}>{entry}</li>
         ))}
       </HistoryTitle> 
+    
+      : ' '}
       </HistoryContainer>
       </Grid>
     </>
