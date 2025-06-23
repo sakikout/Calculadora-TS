@@ -1,4 +1,4 @@
-import { CalculatorContainer, Display, ButtonGrid, Button } from './styles';
+import { CalculatorContainer, Display, ButtonGrid, Button, Grid, HistoryContainer, HistoryTitle } from './styles';
 import { useInput } from '../contexts/InputContext';
 import { useState } from 'react';
 
@@ -16,14 +16,56 @@ export default function Calculator() {
     history,
   } = useInput();
 
+  const buttons = [
+  'C', 'CC', '*', '/',
+  '7', '8', '9', '-',
+  '4', '5', '6', '+',
+  '1', '2', '3', '=',
+  '0', '.'
+  ];
+
+  const specialSpans: Record<string, { col?: number; row?: number }> = {
+    '0': { col: 2 },
+    '=': { row: 2 },
+  };
+
   const [display, setDisplay] = useState('');
 
   const handleInput = (value: string) => {
+
     if (!operator) {
+      if (value === '.' && firstNumber === '') {
+        addFirstNumber('0.');
+        setDisplay('0.');
+        return;
+      }
+
+      if (value === '0' && (firstNumber === '0' || firstNumber === '')) {
+        addFirstNumber('0');
+        setDisplay('0');
+        return;
+      }
+
+      if (value === '.' && firstNumber.includes('.')) return;
+
       const newVal = firstNumber + value;
       addFirstNumber(newVal);
       setDisplay(newVal);
     } else {
+      if (value === '.' && secondNumber === '') {
+        addSecondNumber('0.');
+        setDisplay(firstNumber + ' ' + operator + '0.');
+        return;
+      }
+
+    if (value === '0' && (secondNumber === '0' || secondNumber === '')) {
+      addSecondNumber('0');
+      setDisplay(firstNumber + ' ' + operator + ' 0');
+      return;
+    }
+
+    if (value === '.' && secondNumber.includes('.')) return;
+
       const newVal = secondNumber + value;
       addSecondNumber(newVal);
       setDisplay(firstNumber + ' ' + operator + ' ' + newVal);
@@ -71,33 +113,47 @@ export default function Calculator() {
     setDisplay('');
   };
 
+  const clearEntries = () => {
+    clearHistory();
+    clear();
+  };
+
   return (
     <>
+    <Grid>
     <CalculatorContainer>
-      <h2>Calculadora</h2>
       <Display>{display}</Display>
-      <ButtonGrid>
-        {[1,2,3,4,5,6,7,8,9,0].map((n) => (
-          <Button key={n} onClick={() => handleInput(String(n))}>{n}</Button>
-        ))}
-        <Button onClick={clear}>C</Button>
-        <Button onClick={clearHistory}>CC</Button>
-        <Button onClick={() => handleOperator('*')}>*</Button>
-        <Button onClick={() => handleOperator('/')}>/</Button>
-        <Button onClick={() => handleInput('.')}>.</Button>
-        <Button onClick={() => handleOperator('-')}>-</Button>
-        <Button onClick={() => handleOperator('+')}>+</Button>
-        <Button onClick={calculate}>=</Button>
-      </ButtonGrid>
+    <ButtonGrid>
+    {buttons.map((btn, index) => {
+      const span = specialSpans[btn] || {};
+        return (
+          <Button
+            key={index}
+            $colSpan={span.col}
+            $rowSpan={span.row}
+            onClick={() => {
+                if (btn === '') return;
+                else if (btn === 'C') clear();
+                else if (btn === 'CC') clearEntries();
+                else if (btn === '=') calculate();
+                else if (['+', '-', '*', '/'].includes(btn)) handleOperator(btn);
+                else handleInput(btn);
+           }}
+          >
+          {btn}
+        </Button>
+      );
+    })}
+    </ButtonGrid>
     </CalculatorContainer>
-    <div>
-      <h3>Histórico</h3>
-      <ul>
+    <HistoryContainer>
+      <HistoryTitle>
         {history.map((entry, index) => (
           <li key={index}>{entry}</li>
         ))}
-      </ul> 
-      </div>
+      </HistoryTitle> 
+      </HistoryContainer>
+      </Grid>
     </>
   );
 }
