@@ -15,7 +15,7 @@ export const HistoryContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    width: 300px;
     margin: 100px auto;
     padding: 20px;
 `;
@@ -73,3 +73,60 @@ export const Button = styled.button<ButtonProps>`
   }
 `;
 
+export const FooterContainer = styled.footer`
+  // box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2rem 1rem;
+  // background-color: white;
+  // margin-top: 3rem;
+  text-align: center;
+`;
+
+export const FooterHeading = styled.h5`
+  font-weight: bold;
+  margin-top: 1rem;
+`;
+
+export const FooterLogo = styled.a`
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+`;
+
+export const Menu = styled.div`
+  margin: 1rem 0;
+`;
+
+export const MenuText = styled.a`
+  text-decoration: none;
+  color: #888888;
+  font-size: medium;
+  margin: 0 0.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const SocialList = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin-top: 1rem;
+`;
+
+export const SocialItem = styled.li`
+  margin: 0 0.5rem;
+`;
+
+export const SocialIcon = styled.a`
+  text-decoration: none;
+  color: #f5c030;
+
+`;
+
+export const Copyright = styled.p`
+  color: #646464;
+  font-size: small;
+  margin-top: 1rem;
+`;
