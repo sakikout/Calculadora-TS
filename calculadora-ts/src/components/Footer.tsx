@@ -33,7 +33,7 @@ export default function Footer() {
         </SocialItem>
       </SocialList>
       <Copyright>
-       Copyright ©{getYear()}
+       sakikout ©{getYear()}
       </Copyright>
     </FooterContainer>
   );
