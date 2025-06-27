@@ -1,4 +1,6 @@
-import { CalculatorContainer, Display, ButtonGrid, Button, Grid, HistoryContainer, HistoryTitle } from './styles';
+import { CalculatorContainer, Display, ButtonGrid, 
+        Button, Grid, HistoryContainer, HistoryTitle,
+        HistoryButton, DisplayLabel } from './styles';
 import { useInput } from '../contexts/InputContext';
 import { useState } from 'react';
 
@@ -51,6 +53,12 @@ export default function Calculator() {
       }
 
       if (value === '.' && firstNumber.includes('.')) return;
+
+      if (value !== '0' && firstNumber === '0') {
+        addFirstNumber(value);
+        setDisplay(value);
+        return;
+      }
 
       const newVal = firstNumber + value;
       addFirstNumber(newVal);
@@ -126,7 +134,8 @@ export default function Calculator() {
     <>
     <Grid>
     <CalculatorContainer>
-      <Display>{display}</Display>
+      <Display>
+        <DisplayLabel>{history[history.length - 1]}</DisplayLabel>{display}</Display>
     <ButtonGrid>
     {buttons.map((btn, index) => {
       const span = specialSpans[btn] || {};
@@ -151,7 +160,7 @@ export default function Calculator() {
     </ButtonGrid>
     </CalculatorContainer>
     <HistoryContainer>
-      <Button onClick={toggleHistory}>Show History</Button>
+      <HistoryButton onClick={toggleHistory}>Show History</HistoryButton>
       { historyVisible ?
         
       <HistoryTitle>
