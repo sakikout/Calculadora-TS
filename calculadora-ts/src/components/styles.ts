@@ -44,6 +44,12 @@ export const Display = styled.div`
   text-align: right;
 `;
 
+export const DisplayLabel = styled.div`
+  font-size: 1rem;
+  margin-bottom: 5px;
+
+`;
+
 export const ButtonGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -75,7 +81,7 @@ export const Button = styled.button<ButtonProps>`
 
 export const FooterContainer = styled.footer`
   // box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   // background-color: white;
   // margin-top: 3rem;
   text-align: center;
@@ -129,4 +135,23 @@ export const Copyright = styled.p`
   color: #646464;
   font-size: small;
   margin-top: 1rem;
+`;
+
+export const HistoryButton = styled.button`
+  background: #181C2A;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  
+  &:hover {
+    background:rgb(54, 63, 99);
+  }
+
+  &:active {
+    background: #777;
+  }
 `;
