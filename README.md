@@ -46,3 +46,7 @@ Com isso, todos os componentes que usam esse contexto podem acessar e alterar os
 ---
 ## Considerações Finais
 O protótipo da aplicação teve referência nesse arquivo do [Figma](https://www.figma.com/file/67DjfJYTVTPP0o8AtxExwy/Desafio-3---Calculadora?type=design&node-id=1%3A3&t=f3WGN7ckTIqYKTM7-1), enquanto o contexto veio do usuário [NiquiniNiwi](https://github.com/NiquiniNiwi/Hooks-Processo-Seletivo). Ademais, tudo produzido nesse repositório foi de minha autoria.
+
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
