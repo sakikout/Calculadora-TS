@@ -148,7 +148,8 @@ export const HistoryButton = styled.button`
   transition: background 0.2s;
   
   &:hover {
-    background:rgb(54, 63, 99);
+    background:#f5c030;
+    color: #0E1116;
   }
 
   &:active {
