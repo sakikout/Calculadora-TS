@@ -1,5 +1,5 @@
 
-import Calculator from './components/Calculator'
+import Home from './pages/Home'
 import Footer from './components/Footer'
 import styled from 'styled-components';
 
@@ -21,7 +21,7 @@ function App() {
     <>
       <PageWrapper>
         <MainContent>
-      <Calculator/>
+      <Home/>
       </MainContent>
       <Footer/>
     </PageWrapper>
